@@ -406,8 +406,8 @@ body .progress_inner input[type=radio] {
 /*ticket*/
 
 .card {
-  width: 35%;
-  height: 75%;
+  width: auto;
+  height: auto;
   border-radius: 1em 1em 0 0;
   position: relative;
 }
@@ -424,7 +424,8 @@ body .progress_inner input[type=radio] {
 }
 
 .content {
-  width: 40%;
+  width:auto;
+  height:auto;
   background-image: url(card-backgroud.svg);
 
   background-size: cover;
@@ -436,22 +437,25 @@ body .progress_inner input[type=radio] {
 
 
 .user-info {
-  padding-bottom: 60px;
+  padding-bottom: 160px;
+  width:auto;
+  height:auto
 }
 
 .qr-code {
   position: absolute;
-  bottom: 0;
+  bottom: 21px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1em;
+  margin-top: -1em;
 }
 
 .qr-code img {
-  width: 5 5%;
+  width: 130px;
+  height:auto;
 }
 
 
@@ -506,3 +510,67 @@ select, input[type="date"] {
     border-color: #1e4d6e;
     transform:scale(1.02)
   }
+
+  /* Style de base pour les div */
+  .toggle-button {
+    padding: 15px 20px;
+    margin: 10px;
+    background-color: #70afd0;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    border: 2px solid #354853;
+}
+
+/* Style pour l'état coché */
+.checked {
+    background-color: #2e6c8e;
+}
+
+
+
+
+
+
+
+
+/* 
+
+.ticket-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;  
+  height: auto; 
+  padding: 20px;
+}
+
+.card.content {
+  display: flex;
+  flex-direction: row; 
+  width: auto;
+  max-width: 800px; 
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.user-info {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-code img {
+  width: 150px; 
+  height: auto;
+} */
