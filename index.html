@@ -34,86 +34,111 @@
           <div class='progress_inner__tabs'>
             <div class='tab tab-0' style="z-index: 10;">
               <h1>Commencer la reservation</h1>
-              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus sollicitudin.</p> -->
                <form>
                 <input type="text" id="username" placeholder="Entrer votre Nom et Prénom" style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
                 <input type="email" id="email" placeholder="Entrer votre email" style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-                <button type="button"  id="btnReserver" onclick="next()" style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer;">Enregistrer</button>
+            <label for='step-2' id="btn-1" style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer; display:inline-block; margin:inherit auto;">Next</label>
+
                </form>
             </div>
-            <div class='tab tab-1'>
+            <div class="tab tab-1">
               <h1>La gare et la date</h1>
-              <select style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-                <option value="" selected>La gare de départ</option> 
-                    <option value="Marrakech">Marrakech</option>
-                    <option value="Casablanca">Casablanca</option>
-                    <option value="Fes">Fes</option>
-                    <option value="Rabat">Rabat</option>
-                    <option value="Tanger">Tanger</option>
-                    <option value="Agadir">Agadir</option>
-                    <option value="Oujeda">Oujeda</option>
-                    <option value="Youssoufia">Youssoufia</option>
-            </select>
-              <select style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-                <option value="" selected>La gare d'arriver</option> 
-                <option value="Marrakech">Marrakech</option>
-                <option value="Casablanca">Casablanca</option>
-                <option value="Fes">Fes</option>
-                <option value="Rabat">Rabat</option>
-                <option value="Tanger">Tanger</option>
-                <option value="Agadir">Agadir</option>
-                <option value="Oujeda">Oujeda</option>
-                <option value="Youssoufia">Laayoun</option>
-              </select>
-              <input type="date" style="margin-top: 10px; padding: 15px 20px; width: 400px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;"/>
+            
+              <div class="input-group">
+                <label for="gareDepart">Gare de départ</label>
+                <select id="gareDepart" onclick="updateGareArrive()">
+                  <option value="" selected>La gare de départ</option>
+                  <option value="Marrakech">Marrakech</option>
+                  <option value="Casablanca">Casablanca</option>
+                  <option value="Fes">Fes</option>
+                  <option value="Rabat">Rabat</option>
+                  <option value="Tanger">Tanger</option>
+                  <option value="Agadir">Agadir</option>
+                  <option value="Oujeda">Oujeda</option>
+                  <option value="Youssoufia">Youssoufia</option>
+                </select>
+              </div>
+            
+              <div class="input-group">
+                <label for="gareArrive">Gare d'arrivée</label>
+                <select id="gareArrive">
+                  <option value="" selected>La gare d'arrivée</option>
+                  <option value="Marrakech">Marrakech</option>
+                  <option value="Casablanca">Casablanca</option>
+                  <option value="Fes">Fes</option>
+                  <option value="Rabat">Rabat</option>
+                  <option value="Tanger">Tanger</option>
+                  <option value="Agadir">Agadir</option>
+                  <option value="Oujeda">Oujeda</option>
+                  <option value="Youssoufia">Youssoufia</option>
+                </select>
+              </div>
+            
+              <div class="input-group">
+                <label for="dateDepart">Date de départ</label>
+                <input id="dateDepart" type="date" onchange="validateDates()"/>
+              </div>
+
+              <div class="input-group">
+                <label for="dateArrivee">Date d'arrivée</label>
+                <input id="dateArrivee" type="date" onchange="validateDates()"/>
+              </div>
+            
+              <div class="navigation-buttons">
+                <label for="step-1" class="nav-button">Back</label>
+                <label for="step-3" class="nav-button" id="btn-2">Next</label>
+              </div>
             </div>
+            
             <div class='tab tab-2'>
               <h1>Les resultat de recherche</h1>
               <div style="display: flex; flex-direction: column;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+                <div class="selectable-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
                     <img height="50px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
                     <span>6:30</span>
                     <img width="50px" src="./airplane.png" alt="">
                     <span>8:45</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+                <div class="selectable-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
                     <img height="50px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
                     <span>6:30</span>
                     <img width="50px" src="./airplane.png" alt="">
                     <span>8:45</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+                <div class="selectable-item"  style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
                     <img height="50px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
                     <span>6:30</span>
                     <img width="50px" src="./airplane.png" alt="">
                     <span>8:45</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+                <div class="selectable-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 8px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
                     <img height="50px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
                     <span>6:30</span>
                     <img width="50px" src="./airplane.png" alt="">
                     <span>8:45</span>
                 </div>
               </div>
+              <label for='step-2' style=" padding: 15px 20px; width: 140px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer; display:inline-block; margin:10px 30px;">Back</label>
+              <label for='step-4' style=" padding: 15px 20px; width: 140px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer; display:inline-block; margin:10px 30px;">Next</label>
             </div>
             <div class='tab tab-3'>
               <h1>Voyageurs</h1>
                 <div style="display: flex; justify-content: space-between; padding: 10px;">
                     <div>
-                        <h4>Adult (Prix 500DH)</h4>
+                        <h4>Adult (Prix <span id="prixAdulte">0</span>DH)</h4>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
-                            <span>1</span>
-                            <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
+                            <button id="btnIncrAdulte"  style="cursor:pointer; border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
+                            <span id="nbrAdulte">0</span>
+                            <button id="btnDecrAdulte" style="cursor:pointer; border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                         </div>
                     </div>
                     <div style="width: 5px; background-color: #2e6c8e;"></div>
                     <div>
-                        <h4>Enfant (Prix 100DH)</h4>
+                        <h4>Enfant (Prix <span id="prixEnfant">0</span>DH)</h4>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
-                            <span>1</span>
-                            <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
+                            <button id="btnIncrEnfant" style="cursor:pointer;border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
+                            <span id="nbrEnfant">0</span>
+                            <button id="btnDecrEnfant" style="cursor:pointer; border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                         </div>
                     </div>
                 </div>
@@ -128,7 +153,10 @@
                     <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                     <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                 </div>
-                <h4>Prix Total : 0000DH</h4>
+                <h4>Prix Total : <span id="prixTotal">0000</span>DH</h4>
+
+                <label for='step-3' style=" padding: 15px 20px; width: 140px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer; display:inline-block; margin:10px 30px;">Back</label>
+                <label for='step-5' style=" padding: 15px 20px; width: 140px; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt; cursor:pointer; display:inline-block; margin:10px 30px;">Next</label>
             </div>
             <div class='tab tab-4'>
               <h1>Les tickets</h1>
