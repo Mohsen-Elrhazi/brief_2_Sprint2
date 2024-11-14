@@ -37,15 +37,13 @@ function updateGareArrive() {
 function validateDates() {
   const dateDepart = document.getElementById("dateDepart");
   const dateArrivee = document.getElementById("dateArrivee");
-  const today = new Date().toISOString().split("T")[0]; // Date actuelle au format YYYY-MM-DD
+  
+  const today = new Date().toISOString().split("T")[0]; 
+  dateDepart.min = today; 
 
-  dateDepart.min = today; // La date de départ doit être aujourd'hui ou plus tard
-
-  // Mettre à jour la date minimum d'arrivée selon la date de départ choisie
-  dateArrivee.min = dateDepart.value || ""; // Si aucune date de départ, pas de restriction
+  dateArrivee.min = dateDepart.value || ""; 
 }
 
-// Initialiser la validation et écouter les changements de date
 document.addEventListener("DOMContentLoaded", () => {
   validateDates();
   document
@@ -53,24 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("input", validateDates);
 });
 
-// les resultats de recherche,, selectionner le vol
 document.querySelectorAll(".selectable-item").forEach((item) => {
   item.addEventListener("click", function () {
-    // Supprime la classe "selected" de tous les éléments
     document
       .querySelectorAll(".selectable-item")
       .forEach((el) => el.classList.remove("selected"));
 
-    // Ajoute la classe "selected" a l'element cliqué
+    // ajoute la classe "selected" a l'element clique
     this.classList.add("selected");
 
-    // Récupère les valeurs dans la div cliquée
+    // récupère les valeurs dans la div cliquée
     const values = Array.from(this.querySelectorAll("span")).map(
       (span) => span.textContent
     );
     values.push("Lufthansa");
-
-    // Affiche les valeurs (ou les utilisez selon votre besoin)
     console.log("vol:", values);
   });
 });
@@ -94,8 +88,8 @@ let prixTotal = document.getElementById("prixTotal");
 
 // Fonction pour mettre à jour le prix total
 function updatePrixTotal() {
-  const prixAdu = 1000 * i;
-  const prixEnf = 500 * j;
+  const prixAdu = 500 * i;
+  const prixEnf = 100 * j;
   const total = prixAdu + prixEnf;
   prixTotal.textContent = total;
   return total;
@@ -105,7 +99,7 @@ function updatePrixTotal() {
 btnIncremente.addEventListener("click", function () {
   i += 1;
   span1.innerHTML = i;
-  prixAdulte.textContent = 1000 * i;
+  prixAdulte.textContent = 500 * i;
   updatePrixTotal();
 });
 
@@ -113,7 +107,7 @@ btnDecrement.addEventListener("click", function () {
   if (i > 0) {
     i -= 1;
     span1.innerHTML = i;
-    prixAdulte.textContent = 1000 * i;
+    prixAdulte.textContent = 500 * i;
     updatePrixTotal();
   }
 });
@@ -122,7 +116,7 @@ btnDecrement.addEventListener("click", function () {
 btnIncrEnf.addEventListener("click", function () {
   j += 1;
   span2.innerHTML = j;
-  prixEnfant.textContent = 500 * j;
+  prixEnfant.textContent = 100 * j;
   updatePrixTotal();
 });
 
@@ -130,18 +124,15 @@ btnDecrEnf.addEventListener("click", function () {
   if (j > 0) {
     j -= 1;
     span2.innerHTML = j;
-    prixEnfant.textContent = 500 * j;
+    prixEnfant.textContent = 100 * j;
     updatePrixTotal();
   }
 });
 
-// Sélection de tous les divs avec la classe 'toggle-div'
 const toggleDivs = document.querySelectorAll(".toggle-button");
 
-// Ajouter un écouteur d'événements de clic à chaque div
 toggleDivs.forEach((div) => {
   div.addEventListener("click", function () {
-    // Alterne la classe 'checked' pour changer de style
     div.classList.toggle("checked");
   });
 });
